@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 1</title>
+    <style>
+        #cuadro {
+            background-color: red;
+            width: 200px;
+            height: 200px;
+            padding: 0;
+        }
+        div p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="cuadro">
+        <p id="texto">Este es el contenido del div</p>
+    </div>
+    <button onclick="cambiarTexto()">Cambiar texto</button><br>
+    <button onclick="cambiarColor()">Cambiar color de fondo</button><br>
+    <button onclick="colorTexto()">Cambiar tipo y color de letra</button>
+    <script>
+        var cuadro = document.getElementById("cuadro");
+        var texto = document.getElementById("texto");
+        function cambiarColor() {
+            var color = prompt("Introduzca el color en inglés (red, blue, etc.). También puedes utilizar código hexadecimal con su #:");
+            cuadro.style.backgroundColor = color;
+        }
+        function cambiarTexto() {
+            var nuevoTexto = prompt("Introduzca un nuevo texto:");
+            texto.textContent = nuevoTexto;
+        }
+        function colorTexto() {
+            var tipoLetra = prompt("Introduzca un nuevo tipo de letra (Arial, Times New Roman, Helvetica, etc.):");
+            texto.style.fontFamily = tipoLetra;
+            var nuevoColor = prompt("Introduzca el color en inglés (red, blue, etc.). También puedes utilizar código hexadecimal con su #:");
+            texto.style.color = nuevoColor;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 3</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 10px;
+        }
+        .preguntas {
+            background-color: rgb(222, 222, 222);
+            margin-top: 30px;
+            width: 100%;
+            padding: 10px;
+        }
+        .respuestas {
+            font-weight: bolder;
+        }
+        #finalizar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        button {
+            color: white;
+            background-color: black;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <form name="examen">
+        <div class="preguntas">
+            <label for="pregunta1">¿Cuál de los siguientes elementos no se considera que sea un marcado semántico?</label><br><br>
+            <label for="seleccione">Seleccione una:</label><br>
+            <div class="respuestas">
+                <input type="radio" id="article" name="primera" value="article">a. article<br>
+                <input type="radio" id="section" name="primera" value="section">b. section<br>
+                <input type="radio" id="div" name="primera" value="div">c. div<br>
+                <input type="radio" id="aside" name="primera" value="aside">d. aside
+            </div>
+        </div>
+
+        <div class="preguntas">
+            <label for="pregunta2">Está creando una característica de búsqueda que usa un mercado de formulario web para su sitio web. Cuando un usuario abre la página por primera vez, dese que el cursor del usuario aparezca en el campo Buscar de manera automática. ¿Qué atributo de entrada debe usar?</label><br><br>
+            <label for="seleccione">Seleccione una:</label><br>
+            <div class="respuestas">
+                <input type="radio" id="formmethod" name="segunda" value="formmethod">a. formmethod<br>
+                <input type="radio" id="placeholder" name="segunda" value="placeholder">b. placeholder<br>
+                <input type="radio" id="form" name="segunda" value="form">c. form<br>
+                <input type="radio" id="autofocus" name="segunda" value="autofocus">d. autofocus
+            </div>
+        </div>
+
+        <div class="preguntas">
+            <label for="pregunta3">Desea agregar un título antes de una tabla de HTML, que aparecerá solo una vez. ¿Qué etiqueta usa?</label><br><br>
+            <label for="seleccione">Seleccione una:</label><br>
+            <div class="respuestas">
+                <input type="radio" id="caption" name="tercera" value="caption">a. &lt;caption&gt;<br>
+                <input type="radio" id="colgroup" name="tercera" value="colgroup">b. &lt;colgroup&gt;<br>
+                <input type="radio" id="title" name="tercera" value="title">c. &lt;title&gt;<br>
+                <input type="radio" id="head" name="tercera" value="head">d. &lt;head&gt;
+            </div>
+        </div><br><br>
+    </form>
+    <div id="finalizar">
+        <button onclick="comprobarRespuestas()">Siguiente</button>
+    </div>
+
+    <script>
+        function comprobarRespuestas() {
+            var puntuacion = 0;
+            var pregunta1 = document.querySelector('input[name="primera"]:checked');
+            var pregunta2 = document.querySelector('input[name="segunda"]:checked');
+            var pregunta3 = document.querySelector('input[name="tercera"]:checked');
+
+            if (!pregunta1 || !pregunta2 || !pregunta3) {
+                alert("ERROR: Debes seleccionar una casilla por pregunta.")
+            } else {
+                if (pregunta1.value == "div") {
+                    puntuacion++;
+                }
+                if (pregunta2.value == "autofocus") {
+                    puntuacion++;
+                }
+                if (pregunta3.value == "caption") {
+                    puntuacion++;
+                }
+
+                if (puntuacion == 0) {
+                    document.write("El resultado del examen es: " + puntuacion + "<br>¡Hay que estudiar más!");
+                } 
+                if (puntuacion == 1) {
+                    document.write("El resultado del examen es: " + puntuacion + "<br>¡La próxima vez lo podrías hacer mejor!");
+                } 
+                if (puntuacion == 2) {
+                    document.write("El resultado del examen es: " + puntuacion + "<br>Bueno... ¡un resultado considerable!");
+                } 
+                if (puntuacion == 3) {
+                    document.write("El resultado del examen es: " + puntuacion + "<br>¡Enhorabuena!");
+                }
+            }
+        }
+    </script>
+</body>
+</html>

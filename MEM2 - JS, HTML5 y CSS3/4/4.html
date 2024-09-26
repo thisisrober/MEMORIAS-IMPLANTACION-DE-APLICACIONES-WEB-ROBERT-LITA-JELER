@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OFICINA VIRTUAL DE LA SEGURIDAD SOCIAL</title>
+    <style>
+        h1 {
+            font-weight: normal;
+            color: blue;
+            background-color: orange;
+            width: 37%;
+            font-size: 28px;
+        }
+        form {
+            width: 50%;
+            border: 3px solid black;
+            background-color: yellow;
+        }
+        button {
+            background-color: white;
+            text-decoration: underline;
+            color: blue;
+            border: 0;
+            font-size: 16px;
+            padding: 0;
+            font-family: 'Times New Roman', Times, serif;
+            margin-top: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Solicitud del Informe de Vida Laboral</h1>
+    <form name="formulario" id="formulario">
+        <table>
+            <tr>
+                <td style="width: 250px; align-items: center; justify-content: center; display: flex; font-weight: bolder;"><label for="nombre">Nombre:</label></td>
+                <td><input type="text" name="nombre" id="nombre"></td>
+            </tr>
+            <tr>
+                <td style="align-items: center; justify-content: center; display: flex; font-weight: bolder;"><label for="apellido1">Primer Apellido:</label></td>
+                <td><input type="text" name="apellido1" id="apellido1"></td>
+            </tr>
+            <tr>
+                <td style="align-items: center; justify-content: center; display: flex; font-weight: bolder;"><label for="apellido2">Segundo Apellido:</label></td>
+                <td><input type="text" name="apellido2" id="apellido2"></td>
+            </tr>
+            <tr>
+                <td style="align-items: center; justify-content: center; display: flex; font-weight: bolder;"><label for="correo">Correo Electrónico:</label></td>
+                <td><input type="text" name="correo" id="correo"></td>
+            </tr>
+            <tr>
+                <td style="align-items: center; justify-content: center; display: flex; font-weight: bolder;"><label for="numero">Número de afiliado a la S.S.:</label></td>
+                <td>
+                    <select id="provincia" style="width: 100%;">
+                        <option value="A CORUÑA">A CORUÑA</option>
+                    </select>
+                </td>
+                <td>/ <input type="text" name="numero1" id="numero1" style="width: 37%;" maxlength="7"> / <input type="text" name="numero2" id="numero2" style="width: 10%;" maxlength="2"></td>
+            </tr>
+        </table>
+    </form>
+    <button id="enviar">Enviar</button>
+    <button type="reset" onclick="document.getElementById('formulario').reset()">Borrar</button>
+
+    <script>
+        document.getElementById("enviar").onclick = function(event) {
+            var nombre = document.getElementById("nombre").value.trim();
+            var apellido1 = document.getElementById("apellido1").value.trim();
+            var apellido2 = document.getElementById("apellido2").value.trim();
+            var correo = document.getElementById("correo").value.trim();
+            var numero1 = document.getElementById("numero1").value.trim();
+            var numero2 = document.getElementById("numero2").value.trim();
+
+            if (nombre === "" || apellido1 === "" || apellido2 === "" || correo === "" || numero1 === "" || numero2 === "") {
+                alert("ERROR: Todos los campos deben estar rellenos.");
+                return false;
+            }
+
+            if (!correo.includes("@")) {
+                alert("ERROR: El correo electrónico debe contener un '@'.");
+                return false;
+            }
+
+            if (!/^\d{7}$/.test(numero1)) {
+                alert("ERROR: El primer número de SS debe tener exactamente 7 dígitos y ser numérico.");
+                return false;
+            }
+
+            if (!/^\d{1,2}$/.test(numero2)) {
+                alert("ERROR: El segundo número de SS debe tener 1 o 2 dígitos y ser numérico.");
+                return false;
+            }
+
+            alert("Formulario enviado correctamente.");
+            return true;
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <style>
+        body {
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            font-family: consolas, consolas, sans-serif;
+        }
+        #muestra {
+            border: 1px solid black;
+            padding: 10px;
+            width: 280px;
+            height: 30px;
+            text-align: right;
+            font-size: 20px;
+            border-radius: 10px;
+            background-color: rgb(183, 251, 183);
+        }
+        button {
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            border-radius: 10px;
+            padding: 0;
+            margin: 10px;
+            font-weight: bolder;
+            background-color: grey;
+            color: white;
+        }
+        .calculadora {
+            margin: 20px;
+            border: 3px solid black;
+            padding: 20px;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculadora">
+        <div id="muestra"></div><br>
+        <button onclick="agregarNumero('1')">1</button>
+        <button onclick="agregarNumero('2')">2</button>
+        <button onclick="agregarNumero('3')">3</button>
+        <button onclick="operar('+')">+</button><br>
+        <button onclick="agregarNumero('4')">4</button>
+        <button onclick="agregarNumero('5')">5</button>
+        <button onclick="agregarNumero('6')">6</button>
+        <button onclick="operar('-')">-</button><br>
+        <button onclick="agregarNumero('7')">7</button>
+        <button onclick="agregarNumero('8')">8</button>
+        <button onclick="agregarNumero('9')">9</button>
+        <button onclick="operar('*')">x</button><br>
+        <button onclick="limpiar()">C</button>
+        <button onclick="agregarNumero('0')">0</button>
+        <button onclick="calcular()">=</button>
+        <button onclick="operar('/')">/</button>
+    </div>
+    <script>
+        var pantalla = document.getElementById('muestra');
+        var operacionActual = '';
+        var operador = '';
+        var numeroAnterior = '';
+
+        function agregarNumero(numero) {
+            operacionActual += numero;
+            pantalla.textContent = operacionActual;
+        }
+
+        function operar(op) {
+            if (operacionActual !== '') {
+                numeroAnterior = operacionActual;
+                operacionActual = '';
+                operador = op;
+            }
+        }
+
+        function calcular() {
+            if (numeroAnterior !== '' && operacionActual !== '') {
+                var resultado;
+                switch (operador) {
+                    case '+':
+                        resultado = parseFloat(numeroAnterior) + parseFloat(operacionActual);
+                        break;
+                    case '-':
+                        resultado = parseFloat(numeroAnterior) - parseFloat(operacionActual);
+                        break;
+                    case '*':
+                        resultado = parseFloat(numeroAnterior) * parseFloat(operacionActual);
+                        break;
+                    case '/':
+                        resultado = parseFloat(numeroAnterior) / parseFloat(operacionActual);
+                        break;
+                    default:
+                        return;
+                }
+                pantalla.textContent = resultado;
+                operacionActual = resultado;
+                numeroAnterior = '';
+            }
+        }
+
+        function limpiar() {
+            operacionActual = '';
+            operador = '';
+            numeroAnterior = '';
+            pantalla.textContent = '';
+        }
+    </script>
+
+</body>
+</html>

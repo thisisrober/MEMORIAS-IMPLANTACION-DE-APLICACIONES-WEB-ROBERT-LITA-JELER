@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 2</title>
+    <style>
+        div {
+            border: 1px solid black;
+            width: 100%;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form name="formulario">
+        <div>Configuración del Coche</div>
+        <div>
+            Tipo de Motor<br>
+            <input type="radio" id="gasolina" name="motor" value="gasolina">Gasolina
+            <input type="radio" id="diesel" name="motor" value="diesel">Diesel (+1500E)
+            <input type="radio" id="hibrido" name="motor" value="hibrido">Hibrido (+3000E)
+        </div>
+        <div>
+            Tipo de Puertas<br>
+            <input type="radio" id="tres" name="puertas" value="tres">3 puertas (-2000E) (Solo con Gasolina)
+            <input type="radio" id="cinco" name="puertas" value="cinco">5 puertas
+            <input type="radio" id="familiar" name="puertas" value="familiar">Familiar (+1500E)
+        </div>
+        <div>
+            Tipo de Pintura<br>
+            <input type="radio" id="rojo" name="pintura" value="rojo">Rojo
+            <input type="radio" id="verde" name="pintura" value="verde">Verde
+            <input type="radio" id="naranja" name="pintura" value="naranja">Naranja
+            <input type="radio" id="blanco" name="pintura" value="blanco">Blanco (-500€)
+            <input type="radio" id="negro" name="pintura" value="negro">Negro (-600€)
+        </div>
+        <div>
+            Seleccione las que se deseen:<br>
+            <input type="checkbox" id="metalizada" name="metalizada" value="metalizada">Metalizada (+750E) (Solo Rojo, Verde o Naranja)<br>
+            <input type="checkbox" id="llantas" name="llantas" value="llantas">Llantas (+200E)<br>
+            <input type="checkbox" id="climatizador" name="climatizador" value="climatizador">Climatizador (+800E)<br>
+            <input type="checkbox" id="gps" name="gps" value="gps">GPS (+340E)<br>
+            <input type="checkbox" id="dvd" name="dvd" value="dvd">DVD (+800E) (Solo modelo Familiar)
+        </div>
+    </form>
+    <div>
+        Total a Cobrar
+        <br><button onclick="calculadora()">Cobrar</button>
+    </div>
+    <script>
+        function calculadora() {
+            var total = 0;
+
+            var motor = document.querySelector('input[name="motor"]:checked');
+            var puertas = document.querySelector('input[name="puertas"]:checked');
+            var pintura = document.querySelector('input[name="pintura"]:checked');
+
+            if (!motor || !puertas || !pintura) {
+                alert("ERROR: debes marcar una opción en motor, puertas y pintura.");
+                return;
+            }
+
+            motor = motor.value;
+            pintura = pintura.value;
+            puertas = puertas.value;
+
+            if (motor === "gasolina") total += 10000;
+            else if (motor === "diesel") total += 11500;
+            else if (motor === "hibrido") total += 13000;
+
+            if (puertas === "tres" && motor === "gasolina") total -= 2000;
+            if (puertas === "familiar") total += 1500;
+
+            if (pintura === "blanco") total -= 500; 
+            if (pintura === "negro") total -= 600;
+
+            var metalizada = document.getElementById('metalizada').checked;
+            if (metalizada) {
+                if (pintura === "blanco" || pintura === "negro") {
+                    alert("ERROR: no se puede combinar la pintura blanco o negro con metalizado.");
+                    return;
+                }
+                total += 750;
+            }
+
+            var llantas = document.getElementById('llantas').checked;
+            if (llantas) total += 200;
+
+            var climatizador = document.getElementById('climatizador').checked;
+            if (climatizador) total += 800;
+
+            var gps = document.getElementById('gps').checked;
+            if (gps) total += 340;
+
+            var dvd = document.getElementById('dvd').checked;
+            if (dvd) {
+                if (puertas === "familiar") total += 800;
+                else {
+                    alert("ERROR: el DVD solo está disponible para el modelo Familiar.");
+                    return;
+                }
+            }
+
+            document.write("Total a pagar: " + total + "€");
+        }
+    </script>
+</body>
+</html>

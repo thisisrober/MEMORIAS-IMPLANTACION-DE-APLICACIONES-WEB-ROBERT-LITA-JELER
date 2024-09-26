@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3-a</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        div.titulo {
+            background-color: rgb(184, 184, 184);
+            color: black;
+            font-size: 30px;
+            font-weight: bolder;
+            display: flex;
+            justify-content: center;
+        }
+        input.domicilio {
+            width: 330px;
+            margin-left: 15px;
+        }
+        u {
+            color: red;
+        }
+        input.cp {
+            width: 75px;
+        }
+        input.tlf {
+            width: 110px;
+        }
+        div.botones {
+            display: flex;
+            justify-content: right;
+        }
+        button {
+            margin-left: 5px;
+        }
+        fieldset {
+            background-color: rgb(238, 238, 238);
+            margin-top: 15px;
+        }
+        legend {
+            background-color: white;
+            border: solid 3px rgb(238, 238, 238);
+        }
+        select {
+            width: 90px;
+        }
+        input.ap {
+            width: 190px;
+        }
+    </style>
+</head>
+<body>
+    <div class="titulo">EJEMPLO DE FORMULARIO</div>
+    <fieldset>
+        <legend>Datos personales</legend>
+        <form>
+            <table>
+                <tr>
+                    <td><u>A</u>pellidos:</td>
+                    <td>N<u>o</u>mbre:</td>
+                    <td><u>D</u>NI:</td>
+                </tr>
+                <tr>
+                    <td><input class="ap"></td>
+                    <td><input></td>
+                    <td><input></td>
+                </tr>
+                <tr>
+                    <td><u>N</u>acido en:</td>
+                    <td>Provincia:</td>
+                    <td><u>F</u>echa nacimiento (dd/mm/aaaa):</td>
+                </tr>
+                <tr>
+                    <td><input></td>
+                    <td><select>
+                            <option>Valencia</option>
+                            <option>Madrid</option>
+                            <option>Andalucía</option>
+                            <option>Castilla la Mancha</option>
+                            <option>Castilla y León</option>
+                            <option>Galicia</option>
+                            <option>Cataluña</option>
+                            <option>Asturias</option>
+                            <option>La Rioja</option>
+                            <option>País Vasco</option>
+                        </select>
+                    </td>
+                    <td><input></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Do<u>m</u>icilio:</td>
+                    <td><u>C</u>ódigo postal:</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><select>
+                        <option></option>
+                        <option>Avenida</option>
+                        <option>Calle</option>
+                    </select>
+                        <input class="domicilio"></td>
+                    <td><input class="cp"></td>
+                </tr>
+                <tr>
+                    <td><u>L</u>ocalidad:</td>
+                    <td>Provincia:</td>
+                    <td><u>T</u>eléfono:</td>
+                </tr>
+                <tr></tr>
+                    <td><input></td>
+                    <td><select>
+                            <option>Valencia</option>
+                            <option>Madrid</option>
+                            <option>Andalucía</option>
+                            <option>Castilla la Mancha</option>
+                            <option>Castilla y León</option>
+                            <option>Galicia</option>
+                            <option>Cataluña</option>
+                            <option>Asturias</option>
+                            <option>La Rioja</option>
+                            <option>País Vasco</option>
+                        </select>
+                    </td>
+                    <td><input class="tlf"></td>
+                </tr>
+            </table>
+            <div class="botones">
+                <button>Borrar todo</button>
+                <button type="submit">Enviar</button>
+            </div>
+        </form>
+    </fieldset>
+</body>
+</html>

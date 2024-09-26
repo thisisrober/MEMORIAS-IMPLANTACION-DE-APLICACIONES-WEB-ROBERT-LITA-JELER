@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3-b</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        select {
+            width: 60px;
+        }
+        button {
+            border-radius: 15px;
+            padding: 6px;
+        }
+        input.email {
+            width: 210px;
+        }
+        label {
+            font-weight: bolder;
+        }
+        fieldset {
+            width: 400px;
+            background-color: rgb(228, 228, 228);
+        }
+    </style>
+</head>
+<body>
+    <p>This is a feedback form</p>
+    <fieldset>
+        <form>
+            <label>Name:</label>
+            <input><br>
+            <label>E-mail:</label>
+            <input class="email"><br>
+            <label>Phone:</label>
+            <input><br>
+            <label>Callback on:</label>
+            <select></select><input type="time"> UTC <br>
+            <label>Priority:</label>
+            <input type="range" min="1" max="5" value="1"><br>
+            <button>Request call</button>
+        </form>
+    </fieldset>
+</body>
+</html>
